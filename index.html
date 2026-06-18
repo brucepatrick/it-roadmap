@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete IT Engineering Roadmap</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; color: #1a1a1a; background: #fff; padding: 20px; max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; color: #1a1a1a; }
+  .subtitle { font-size: 14px; color: #555; margin-bottom: 20px; line-height: 1.6; }
+  .selector-box { background: #f7f7f7; border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px; margin-bottom: 24px; }
+  .selector-box p { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 10px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill { font-size: 11px; padding: 5px 11px; border-radius: 20px; background: #fff; border: 1px solid #ccc; cursor: pointer; color: #444; transition: all 0.15s; text-decoration: none; display: inline-block; }
+  .pill:hover { background: #e8f0fe; border-color: #4a86e8; color: #1a56c4; }
+  .pill.active { background: #4a86e8; border-color: #4a86e8; color: #fff; }
+  .next-banner { display: none; background: #e8f5e9; border: 1px solid #4caf50; border-radius: 8px; padding: 14px 18px; margin-bottom: 20px; }
+  .next-banner p { font-size: 13px; color: #2e7d32; font-weight: 600; margin-bottom: 6px; }
+  .next-banner a { display: inline-block; background: #4caf50; color: #fff; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 6px; text-decoration: none; margin-top: 4px; }
+  .next-banner a:hover { background: #388e3c; }
+  .track { border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 16px; overflow: hidden; }
+  .track-header { padding: 10px 16px; display: flex; align-items: center; gap: 10px; }
+  .track-badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+  .track-name { font-size: 14px; font-weight: 600; }
+  .tier { padding: 12px 16px; border-top: 1px solid #e8e8e8; }
+  .tier-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #888; margin-bottom: 8px; }
+  .courses { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; }
+  .course-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 10px 12px; text-decoration: none; display: block; transition: all 0.15s; }
+  .course-card:hover { border-color: #4a86e8; background: #f0f4ff; }
+  .course-card.is-next { border: 2px solid #4caf50; background: #f1f8f1; }
+  .course-card.is-done { opacity: 0.45; pointer-events: none; }
+  .ctype { font-size: 10px; font-weight: 700; text-transform: uppercase; margin-bottom: 3px; }
+  .ctype.video { color: #1565c0; }
+  .ctype.exam { color: #e65100; }
+  .ctitle { font-size: 12px; font-weight: 600; color: #1a1a1a; line-height: 1.4; margin-bottom: 2px; }
+  .cdesc { font-size: 11px; color: #666; line-height: 1.3; }
+  .tag { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 10px; margin-top: 5px; }
+  .tag.next { background: #c8e6c9; color: #1b5e20; }
+  .tag.done { background: #eeeeee; color: #555; }
+  .track-cta { background: #fafafa; border-top: 1px solid #e8e8e8; padding: 10px 16px; font-size: 12px; color: #555; font-style: italic; }
+  .t1-head { background: #e8f0fe; } .t1-badge { background: #c5d8fb; color: #1a56c4; }
+  .t2-head { background: #e8f5e9; } .t2-badge { background: #c8e6c9; color: #1b5e20; }
+  .t3-head { background: #fff8e1; } .t3-badge { background: #ffe082; color: #7c5700; }
+  .t4-head { background: #ede7f6; } .t4-badge { background: #d1c4e9; color: #4527a0; }
+  .t5-head { background: #f5f5f5; } .t5-badge { background: #e0e0e0; color: #333; }
+  .t1-name { color: #1a56c4; } .t2-name { color: #1b5e20; } .t3-name { color: #7c5700; } .t4-name { color: #4527a0; } .t5-name { color: #333; }
+  .footer { text-align: center; font-size: 12px; color: #888; margin-top: 20px; padding-top: 16px; border-top: 1px solid #e8e8e8; }
+</style>
+</head>
+<body>
+
+<h1>The Complete IT Engineering & Automation Roadmap</h1>
+<p class="subtitle">Congratulations on finishing your course! Select it below and your personalized next step will appear at the top. Every course listed is clickable and opens directly with your exclusive discount.</p>
+<p class="subtitle">If you are on a Udemy Business or Personal Plan subscription, you can launch any of the video training tiers directly from your dashboard right now.</p>
+
+<div class="selector-box">
+  <p>Which course did you just complete?</p>
+  <div class="pills" id="pills"></div>
+</div>
+
+<div class="next-banner" id="next-banner">
+  <p id="next-banner-text"></p>
+  <a id="next-banner-link" href="#" target="_blank">Enroll now with your student discount &rarr;</a>
+</div>
+
+<div id="tracks"></div>
+
+<div class="footer">All courses are taught by the same instructor &mdash; your student discount is applied automatically through each link.</div>
+
+<script>
+var courses = [
+  // Track 1 Tier 1
+  { id:"vmware-ws",       title:"VMware Workstation",              desc:"Build virtual labs like an expert",         type:"Video", track:1, tier:1, url:"https://www.udemy.com/course/vmware-vsphere-home-lab/?referralCode=9822D4EF37871F87B74F" },
+  { id:"vsphere1",        title:"vSphere Masterclass 1/2",         desc:"Beginner to intermediate",                  type:"Video", track:1, tier:1, url:"https://www.udemy.com/course/vmware-vsphere/?referralCode=1B78695D6F20F4F46444" },
+  { id:"vsphere2",        title:"vSphere Masterclass 2/2",         desc:"Intermediate to advanced",                  type:"Video", track:1, tier:1, url:"https://www.udemy.com/course/vmware-vsphere-2/?referralCode=585410B8A5DD2B9D3688" },
+  { id:"nutanix-boot",    title:"Nutanix Private Cloud Bootcamp",  desc:"Complete HCI solution",                     type:"Video", track:1, tier:1, url:"https://www.udemy.com/course/nutanix-private-cloud-solution/?referralCode=278B8D82F9821904A314" },
+  { id:"az900-video",     title:"AZ-900: Azure Fundamentals",      desc:"Free lab & practice exams 2026",           type:"Video", track:1, tier:1, url:"https://www.udemy.com/course/microsoft-az-900-azure/?referralCode=C385CB3233F249B7C676" },
+  // Track 1 Tier 2
+  { id:"nca",             title:"NCA Practice Exams",              desc:"Nutanix Certified Associate 2026",          type:"Exam",  track:1, tier:2, url:"https://www.udemy.com/course/nutanix-certified-associate-nca-610-practice-exams/?referralCode=1507AFBBFEF38EC2910B" },
+  { id:"az900-exam",      title:"AZ-900 Exam Prep",                desc:"Microsoft Azure Fundamentals",              type:"Exam",  track:1, tier:2, url:"https://www.udemy.com/course/az-900-azure-practice-tests/?referralCode=3A8FF6122F001F00B219" },
+  { id:"vcp-dcv",         title:"VCP-DCV v8 Practice Test",        desc:"VMware Data Center Virtualization",         type:"Exam",  track:1, tier:2, url:"https://www.udemy.com/course/vmware-data-center-virtualization-vcp-dcv-practice-test/?referralCode=FF3F1F78391EBC2E7A55" },
+  { id:"ncp-mci",         title:"NCP-MCI 6.10 Practice Exams",     desc:"Nutanix Certified Professional",            type:"Exam",  track:1, tier:2, url:"https://www.udemy.com/course/nutanix-certified-professional-ncp-mci-practice-exams/?referralCode=64F39A18E8C028A19EA4" },
+  { id:"ncp-mci-mastery", title:"NCP-MCI 6.10 Mastery",           desc:"Complete practice test",                    type:"Exam",  track:1, tier:2, url:"https://www.udemy.com/course/ncp-mci-610-certification-mastery-complete-practice-test/?referralCode=5A299477A333700FA716" },
+  // Track 2 Tier 1
+  { id:"cmd",             title:"Windows CMD for IT Admins",       desc:"Daily tasks & automation",                  type:"Video", track:2, tier:1, url:"https://www.udemy.com/course/command-line-course/?referralCode=487570E11557ED6E23C9" },
+  { id:"ps75",            title:"PowerShell 7.5 Bootcamp",         desc:"Cross-platform scripting",                  type:"Video", track:2, tier:1, url:"https://www.udemy.com/course/powershell-course/?referralCode=7BF556C260960856083F" },
+  { id:"ps-hands",        title:"PowerShell: Complete Hands-On",   desc:"Scripting & automation",                    type:"Video", track:2, tier:1, url:"https://www.udemy.com/course/windows-powershell/?referralCode=40AC783384A99E097EA9" },
+  { id:"ps-master",       title:"Master PowerShell Scripting",     desc:"Objects, pipelines & automation",           type:"Video", track:2, tier:1, url:"https://www.udemy.com/course/powershell-object-oriented/?referralCode=9F56C092392B5F73E161" },
+  { id:"python",          title:"Python Fundamentals",             desc:"Beginner's guide to coding",                type:"Video", track:2, tier:1, url:"https://www.udemy.com/course/python-3-course/?referralCode=B9C9C3325A05BDBA5D24" },
+  { id:"pcep",            title:"PCEP Mastery Blueprint",          desc:"Python certification prep",                 type:"Exam",  track:2, tier:1, url:"https://www.udemy.com/course/pcep-python-certification/?referralCode=1A66E881C55C731526FF" },
+  // Track 2 Tier 2
+  { id:"powercli",        title:"VMware PowerCLI",                 desc:"Automating virtualization tasks",           type:"Video", track:2, tier:2, url:"https://www.udemy.com/course/vmware-powercli/?referralCode=149F7D1C4EA1ED6B037E" },
+  { id:"nutanix-auto",    title:"Nutanix Advanced Automation",     desc:"Calm, Flow & X-Play",                       type:"Video", track:2, tier:2, url:"https://www.udemy.com/course/nutanix-automation/?referralCode=58325D7666531B390A98" },
+  { id:"ncp-mca",         title:"NCP-MCA 6.10",                    desc:"Multicloud automation practice",            type:"Exam",  track:2, tier:2, url:"https://www.udemy.com/course/nutanix-ncp-mca-multicloud-automation-practice-tests/?referralCode=95277B6E1D7F010A234F" },
+  // Track 2 Tier 3
+  { id:"git",             title:"Git & GitHub: Beginner to Pro",   desc:"Version control essentials",                type:"Video", track:2, tier:3, url:"https://www.udemy.com/course/github-git/?referralCode=D537CC1DC2E81F431F33" },
+  { id:"github-repo",     title:"GitHub Repo Management",          desc:"Collaborative software assets",             type:"Video", track:2, tier:3, url:"https://www.udemy.com/course/GitHub-Pull-Requests/?referralCode=7AD3FB51BE34BDCBA420" },
+  { id:"github-pr",       title:"GitHub Pull Requests",            desc:"Complete workflow masterclass",             type:"Video", track:2, tier:3, url:"https://www.udemy.com/course/GitHub-Repository-Management/?referralCode=7AD3FB51BE34BDCBAC50" },
+  { id:"git-advanced",    title:"Advanced Git Branching",          desc:"Enterprise rebase flows",                   type:"Video", track:2, tier:3, url:"https://www.udemy.com/course/advanced-git-branching-collaboration/?referralCode=170F2FFC4C439708248C" },
+  // Track 3 Tier 1
+  { id:"veeam-basics",    title:"Veeam Backup Basics",             desc:"First backup in 60 minutes",                type:"Video", track:3, tier:1, url:"https://www.udemy.com/course/veeam-backup-basics/?referralCode=5B0FA83A300BA462A3DE" },
+  { id:"dr-planning",     title:"Backup Strategy & DR Planning",   desc:"RPO, RTO & lifecycle design",               type:"Video", track:3, tier:1, url:"https://www.udemy.com/course/backup-disaster-recovery-fundamentals/?referralCode=D4F46367B129DBB02047" },
+  { id:"nakivo",          title:"NAKIVO Backup & Replication",     desc:"VMware, Hyper-V & cloud",                   type:"Video", track:3, tier:1, url:"https://www.udemy.com/course/nakivo-backup-replication/?referralCode=1D2F81F8DA815E629A22" },
+  { id:"veeam-adv",       title:"Veeam Advanced Labs",             desc:"VMCE 2026 exam prep",                       type:"Video", track:3, tier:1, url:"https://www.udemy.com/course/veeam-backup-replication-data-protection/?referralCode=50CFD3B2D0B4CD78F4A3" },
+  { id:"vmce",            title:"VMCE Complete Exam Prep",         desc:"+340 practice questions",                   type:"Exam",  track:3, tier:1, url:"https://www.udemy.com/course/vmce-veeam-certified-engineer/?referralCode=E3D331D1B0EBF9E1BC8D" },
+  // Track 3 Tier 2
+  { id:"ncp-ns",          title:"NCP-NS Exam Prep",                desc:"Nutanix Network & Security",                type:"Exam",  track:3, tier:2, url:"https://www.udemy.com/course/nutanix-certified-network-security-ncp-ns-exam-prep/?referralCode=F3BD0427A3EB978394B4" },
+  { id:"ncp-us",          title:"NCP-US 6.10",                     desc:"100% original practice questions",          type:"Exam",  track:3, tier:2, url:"https://www.udemy.com/course/ncp-us-exam-prep/?referralCode=E66C0BA780806BFA0A2B" },
+  // Track 4 Tier 1
+  { id:"extjs",           title:"Ext JS Masterclass",              desc:"Enterprise-grade web apps",                 type:"Video", track:4, tier:1, url:"https://www.udemy.com/course/sencha-touch/?referralCode=3FCAB7BAC19385191914" },
+  { id:"ai-it",           title:"AI for IT Automation",            desc:"Agents & network monitoring",               type:"Video", track:4, tier:1, url:"https://www.udemy.com/course/ai-for-it/?referralCode=7910E7A38BB6916EE1CA" },
+  { id:"ai-leadership",   title:"AI Leadership for Managers",      desc:"Business transformation",                   type:"Video", track:4, tier:1, url:"https://www.udemy.com/course/cpa-tactic/?referralCode=B5485B37B8C2F0022F5E" },
+  { id:"servicenow",      title:"ServiceNow CSA",                  desc:"IT service management",                     type:"Exam",  track:4, tier:1, url:"https://www.udemy.com/course/servicenow-certified-system-administrator-n/?referralCode=590BEF5AFAE30452871D" },
+  // Track 4 Tier 2
+  { id:"ncp-euc",         title:"NCP-EUC Exam Prep",               desc:"End user computing",                        type:"Exam",  track:4, tier:2, url:"https://www.udemy.com/course/nutanix-end-user-computing/?referralCode=A13040924BDF8FE9DDEC" },
+  { id:"ncp-euc-610",     title:"NCP-EUC 6.10 Practice Tests",     desc:"Nutanix certified",                         type:"Exam",  track:4, tier:2, url:"https://www.udemy.com/course/nutanix-certified-professional-ncp-euc-practice-tests/?referralCode=682F4431339340CD38BB" },
+  { id:"ncp-ci-aws",      title:"NCP-CI-AWS",                      desc:"Nutanix on AWS exam prep",                  type:"Exam",  track:4, tier:2, url:"https://www.udemy.com/course/nutanix-certified-cloud-integration-aws-ncp-ci-aws/?referralCode=DCF08A040C47D7CE75B7" },
+  { id:"snowflake",       title:"Snowflake SnowPro Core",          desc:"Core certification",                        type:"Exam",  track:4, tier:2, url:"https://www.udemy.com/course/snowflake-snowpro-core-certification-course/?referralCode=951844A99818792D8908" },
+  // Track 4 Tier 3
+  { id:"ai103",           title:"AI-103 Azure AI Engineer",         desc:"Associate practice exam",                  type:"Exam",  track:4, tier:3, url:"https://www.udemy.com/course/ai-103-microsoft-azure-ai-engineer-associate-practice-exam/?referralCode=4D265F3E7F7A9FEABD53" },
+  { id:"ncp-ai",          title:"NCP-AI Exam Prep",                desc:"Nutanix AI certification",                  type:"Exam",  track:4, tier:3, url:"https://www.udemy.com/course/ncp-ai-nutanix-enterprise-ai/?referralCode=536418A9F4AA6585523F" },
+  { id:"secai-adv",       title:"CompTIA SecAI+ Advanced",         desc:"AI security tests",                         type:"Exam",  track:4, tier:3, url:"https://www.udemy.com/course/comptia-secure-ai-systems/?referralCode=8E99CC8AFCE3C2A6E6A0" },
+  { id:"secai-360",       title:"CompTIA SecAI+ 360",              desc:"AI security practice questions",            type:"Exam",  track:4, tier:3, url:"https://www.udemy.com/course/comptia-secai/?referralCode=E71225E3E5FD5C7AE377" },
+  // Track 5
+  { id:"biz-priority",    title:"Discover Your Business Priority", desc:"IT to corporate goals",                     type:"Video", track:5, tier:1, url:"https://www.udemy.com/course/how-to-accelerate-your-business-benefits/?referralCode=7AD3FB51BE34BDCBAC40" },
+  { id:"six-sigma",       title:"Six Sigma White Belt",            desc:"Process design fundamentals",               type:"Video", track:5, tier:1, url:"https://www.udemy.com/course/six-sigma-white-belt-certification-quality-fundamentals/?referralCode=ABF1FE18F6E4280F4814" },
+  { id:"six-sigma-lang",  title:"Six Sigma White Belt + 6 Languages", desc:"Training & certification",              type:"Video", track:5, tier:1, url:"https://www.udemy.com/course/certification-six-sigma-white-belt/?referralCode=BA124EA74A54B25916F4" },
+  { id:"cpa",             title:"CPA Marketing from the Experts",  desc:"Learning CPA marketing",                   type:"Video", track:5, tier:1, url:"https://www.udemy.com/course/cpa-marketing-course/?referralCode=57E2DEFBC6A5EFF6B7C7" }
+];
+
+var nextMap = {
+  "vmware-ws":      "vsphere1",
+  "vsphere1":       "vsphere2",
+  "vsphere2":       "nutanix-boot",
+  "nutanix-boot":   "nca",
+  "az900-video":    "az900-exam",
+  "cmd":            "ps75",
+  "ps75":           "ps-master",
+  "ps-hands":       "ps-master",
+  "ps-master":      "powercli",
+  "python":         "pcep",
+  "pcep":           "python",
+  "powercli":       "nutanix-auto",
+  "nutanix-auto":   "ncp-mca",
+  "git":            "github-repo",
+  "github-repo":    "github-pr",
+  "github-pr":      "git-advanced",
+  "veeam-basics":   "veeam-adv",
+  "dr-planning":    "nakivo",
+  "nakivo":         "veeam-adv",
+  "veeam-adv":      "vmce",
+  "ai-it":          "nutanix-boot",
+  "six-sigma":      "ai-leadership",
+  "ai-leadership":  "ai-it",
+  "biz-priority":   "six-sigma-lang",
+  "extjs":          "python",
+  "cpa":            "ai-leadership",
+  "six-sigma-lang": "biz-priority"
+};
+
+var trackMeta = {
+  1: { label:"Track 1", name:"Cloud & infrastructure administration",    headCls:"t1-head", badgeCls:"t1-badge", nameCls:"t1-name", cta:"Complete Tier 1 videos before moving to Tier 2 certification exams." },
+  2: { label:"Track 2", name:"Enterprise automation, scripting & DevOps", headCls:"t2-head", badgeCls:"t2-badge", nameCls:"t2-name", cta:"Work through Tier 1 scripting fundamentals before Tier 2 automation tools." },
+  3: { label:"Track 3", name:"Data protection, business continuity & security", headCls:"t3-head", badgeCls:"t3-badge", nameCls:"t3-name", cta:"Start with Veeam Basics and build toward VMCE certification." },
+  4: { label:"Track 4", name:"Next-gen AI engineering & cloud architecture", headCls:"t4-head", badgeCls:"t4-badge", nameCls:"t4-name", cta:"Complete Track 1 or 2 before starting AI and cloud specializations." },
+  5: { label:"Track 5", name:"Business architecture & operational efficiency", headCls:"t5-head", badgeCls:"t5-badge", nameCls:"t5-name", cta:"Ideal alongside any technical track to align IT skills with business goals." }
+};
+
+var tierLabels = {
+  1: { 1:"Tier 1 &mdash; core virtualization & infrastructure basics", 2:"Tier 2 &mdash; infrastructure certification preparation" },
+  2: { 1:"Tier 1 &mdash; OS control & scripting fundamentals", 2:"Tier 2 &mdash; advanced IaC & infrastructure optimization", 3:"Tier 3 &mdash; version control & Git workflows" },
+  3: { 1:"Tier 1 &mdash; disaster recovery implementation", 2:"Tier 2 &mdash; hardening specialized cloud infrastructure" },
+  4: { 1:"Tier 1 &mdash; next-gen platforms & operations", 2:"Tier 2 &mdash; advanced cloud platform specialties", 3:"Tier 3 &mdash; AI security & data engineering" },
+  5: { 1:"Business & process alignment" }
+};
+
+var selectedId = null;
+
+function buildPills() {
+  var pillableCourses = courses.filter(function(c){ return c.type === "Video"; });
+  var container = document.getElementById("pills");
+  pillableCourses.forEach(function(c) {
+    var el = document.createElement("span");
+    el.className = "pill";
+    el.innerHTML = c.title;
+    el.setAttribute("data-id", c.id);
+    el.onclick = function() { selectCourse(c.id); };
+    container.appendChild(el);
+  });
+}
+
+function selectCourse(id) {
+  selectedId = id;
+  document.querySelectorAll(".pill").forEach(function(p){ p.classList.remove("active"); });
+  var activePill = document.querySelector('.pill[data-id="' + id + '"]');
+  if (activePill) activePill.classList.add("active");
+  renderAll();
+}
+
+function renderAll() {
+  var nextId = selectedId ? nextMap[selectedId] : null;
+  var nextCourse = nextId ? courses.find(function(c){ return c.id === nextId; }) : null;
+  var doneCourse = selectedId ? courses.find(function(c){ return c.id === selectedId; }) : null;
+
+  // Banner
+  var banner = document.getElementById("next-banner");
+  if (nextCourse) {
+    document.getElementById("next-banner-text").innerHTML = "Your recommended next course: <strong>" + nextCourse.title + "</strong> &mdash; " + nextCourse.desc;
+    document.getElementById("next-banner-link").href = nextCourse.url;
+    banner.style.display = "block";
+  } else {
+    banner.style.display = "none";
+  }
+
+  // Tracks
+  var container = document.getElementById("tracks");
+  container.innerHTML = "";
+
+  [1,2,3,4,5].forEach(function(trackNum) {
+    var meta = trackMeta[trackNum];
+    var tiers = tierLabels[trackNum];
+    var trackCourses = courses.filter(function(c){ return c.track === trackNum; });
+    var tierNums = Object.keys(tiers).map(Number);
+
+    var html = '<div class="track">';
+    html += '<div class="track-header ' + meta.headCls + '">';
+    html += '<span class="track-badge ' + meta.badgeCls + '">' + meta.label + '</span>';
+    html += '<span class="track-name ' + meta.nameCls + '">' + meta.name + '</span>';
+    html += '</div>';
+
+    // If next course is in this track, show it first as a highlighted block
+    var nextInThisTrack = nextCourse && nextCourse.track === trackNum;
+    if (nextInThisTrack) {
+      html += '<div class="tier" style="background:#f1f8f1;border-top:2px solid #4caf50;">';
+      html += '<div class="tier-label" style="color:#2e7d32;">Recommended next step for you</div>';
+      html += '<div class="courses">';
+      html += buildCard(nextCourse, true, false);
+      html += '</div></div>';
+    }
+
+    tierNums.forEach(function(tierNum) {
+      var tierCourses = trackCourses.filter(function(c){ return c.tier === tierNum; });
+      if (!tierCourses.length) return;
+      html += '<div class="tier">';
+      html += '<div class="tier-label">' + tiers[tierNum] + '</div>';
+      html += '<div class="courses">';
+      tierCourses.forEach(function(c) {
+        var isNext = nextCourse && c.id === nextCourse.id;
+        var isDone = doneCourse && c.id === doneCourse.id;
+        // In tier list, still show next card (not faded) but without extra highlight since already shown above
+        html += buildCard(c, isNext, isDone);
+      });
+      html += '</div></div>';
+    });
+
+    html += '<div class="track-cta">' + meta.cta + '</div>';
+    html += '</div>';
+
+    container.innerHTML += html;
+  });
+}
+
+function buildCard(c, isNext, isDone) {
+  var cls = "course-card";
+  if (isNext) cls += " is-next";
+  if (isDone) cls += " is-done";
+  var tag = "";
+  if (isNext) tag = '<span class="tag next">Next step &rarr;</span>';
+  if (isDone) tag = '<span class="tag done">Completed</span>';
+  return '<a class="' + cls + '" href="' + c.url + '" target="_blank">' +
+    '<div class="ctype ' + c.type.toLowerCase() + '">' + c.type + '</div>' +
+    '<div class="ctitle">' + c.title + '</div>' +
+    '<div class="cdesc">' + c.desc + '</div>' +
+    tag +
+    '</a>';
+}
+
+buildPills();
+renderAll();
+</script>
+</body>
+</html>
