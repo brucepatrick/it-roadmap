@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | IT Engineering Roadmap</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; color: #1a1a1a; background: #fff; padding: 20px; max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .subtitle { font-size: 14px; color: #555; margin-bottom: 20px; line-height: 1.6; }
+  .back { display: inline-block; font-size: 13px; color: #1a56c4; text-decoration: none; margin-bottom: 16px; }
+  .back:hover { text-decoration: underline; }
+  .form-box { background: #f7f7f7; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; }
+  label { display: block; font-size: 13px; font-weight: 600; color: #333; margin-bottom: 6px; }
+  input, select, textarea { width: 100%; font-family: inherit; font-size: 14px; padding: 9px 11px; border: 1px solid #ccc; border-radius: 6px; background: #fff; margin-bottom: 16px; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: #4a86e8; box-shadow: 0 0 0 2px #e8f0fe; }
+  textarea { min-height: 140px; resize: vertical; }
+  button { background: #4a86e8; color: #fff; font-size: 13px; font-weight: 600; padding: 10px 22px; border: none; border-radius: 6px; cursor: pointer; }
+  button:hover { background: #1a56c4; }
+  .footer { text-align: center; font-size: 12px; color: #888; margin-top: 20px; padding-top: 16px; border-top: 1px solid #e8e8e8; }
+</style>
+</head>
+<body>
+
+<a class="back" href="index.html">&larr; Back to the roadmap</a>
+<h1>Contact</h1>
+<p class="subtitle">Have a question about a course or your next step on the roadmap? Send a message below and it will open in your email app, ready to send.</p>
+
+<form class="form-box" id="contact-form">
+  <label for="name">Your name</label>
+  <input type="text" id="name" required>
+
+  <label for="email">Your email</label>
+  <input type="email" id="email" required>
+
+  <label for="topic">Topic</label>
+  <select id="topic">
+    <option>Course question</option>
+    <option>Roadmap suggestion</option>
+    <option>Technical issue with this page</option>
+    <option>Other</option>
+  </select>
+
+  <label for="message">Message</label>
+  <textarea id="message" required></textarea>
+
+  <button type="submit">Send message</button>
+</form>
+
+<div class="footer">The IT Engineering &amp; Automation Roadmap</div>
+
+<script>
+  // TODO: replace with the real contact address
+  var CONTACT_EMAIL = "you@example.com";
+
+  document.getElementById("contact-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var topic = document.getElementById("topic").value;
+    var message = document.getElementById("message").value;
+    var body = message + "\n\n— " + name + " (" + email + ")";
+    window.location.href = "mailto:" + CONTACT_EMAIL +
+      "?subject=" + encodeURIComponent("[Roadmap] " + topic) +
+      "&body=" + encodeURIComponent(body);
+  });
+</script>
+</body>
+</html>
